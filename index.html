@@ -42,9 +42,9 @@
 		// add text
 		// title
 		svg.append('text')
-					.attr("x", 200)
+					.attr("x", 150)
 					.attr("y", 35)
-					.text("Physical Parameters vs Home Runs")
+					.text("Player Physical Parameters vs Home Runs")
 					.attr("font-family","sans-serif")
 					.attr("font-size", "30px")
 					.attr("fill", "black");
@@ -83,7 +83,65 @@
   					.style("fill", "none")
  					.style("stroke-width", 	1);
 		
-		
+		// HR legend
+		svg.append('circle')
+					.attr("cx", margin+75)
+        			.attr("cy", margin+70)
+        			.attr("r", 11.4)
+        			.style("stroke", "black")
+					.style("fill", "none")
+					.style("stroke-width", 	1)
+		svg.append('circle')
+					.attr("cx", margin+75)
+					.attr("cy", margin+70)
+					.attr("r", 28.5)
+					.style("stroke", "black")
+					.style("fill", "none")
+					.style("stroke-width", 	1);
+		svg.append('circle')
+					.attr("cx", margin+75)
+					.attr("cy", margin+70)
+					.attr("r", 45.6)
+					.style("stroke", "black")
+					.style("fill", "none")
+					.style("stroke-width", 	1);
+		svg.append('text')
+					.attr("x", margin+75-7)
+					.attr("y", margin +70)
+					.text("100")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "8px")
+					.attr("fill", "black");
+		svg.append('text')
+					.attr("x", margin+75-7)
+					.attr("y", margin +70-17.1)
+					.text("250")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "8px")
+					.attr("fill", "black");
+		svg.append('text')
+					.attr("x", margin+75-7)
+					.attr("y", margin +70-34.2)
+					.text("400")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "8px")
+					.attr("fill", "black");
+		svg.append('text')
+					.attr("x", margin+50)
+					.attr("y", margin +15)
+					.text("Home Runs")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "10px")
+					.attr("fill", "black");
+		svg.append("rect")
+			        .attr("x", margin +20)
+        			.attr("y", margin )
+			        .attr("width", 110)
+        			.attr("height", 120)
+        			.style("stroke", "black")
+					.style("fill", "none")
+					.style("stroke-width", 	1);
+
 		
 	};
 </script>
