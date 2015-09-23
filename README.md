@@ -22,5 +22,6 @@ on one chart. I chose to put height and weight on the axis because there are so 
  * result: Added cutsie blurb "The bigger they are, the farther it falls" to sumarize conclussion
  * feedback: What do the circles represent?
  * result: Added legend for bubles
+ 
 ##Resources 
 I consulted D3 and Dimple documentation to create the visualization.
