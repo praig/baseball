@@ -6,7 +6,7 @@ It highlights that, when they hit homers, the "heftier" guys tended to hit more.
 
 
 ##Design
-I had more columns than I could show. I chose the HR column ove the avg column based on which would be more interesting. 
+I had more columns than I could show. I chose the HR column over the avg column based on which would be more interesting. 
 Since there are multiple columns, and I did not want a table, I chose the bubble plot. It allows me up to 4 different dimensions
 on one chart. I chose to put height and weight on the axis because there are so many values that there was no better way to display them. I chose color for handedness as there are only 3 values and color is good for small numbers of categories. Finally the size is set for the HR value since really it was the "result" and has the most impact.
 
