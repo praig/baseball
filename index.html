@@ -52,7 +52,8 @@ function draw(data) {
 			var myChart = new dimple.chart(svg, data);
 			var x=myChart.addCategoryAxis("x", "weight");
 				x.fontSize = 'auto';
-			myChart.addCategoryAxis("y", "height").fontSize = 'auto';
+			var y=myChart.addCategoryAxis("y", "height")
+				y.fontSize = 'auto';
 			myChart.addMeasureAxis("z", "HR");
 
 			myChart.addSeries("handedness", dimple.plot.bubble)
@@ -64,7 +65,11 @@ function draw(data) {
 		//reduce ticks
 		cleanAxis(x,10);
 
-		// add text
+		// adjust axis titles
+		x.titleShape.text("Weight (pounds)");
+		y.titleShape.text("Height (inches)");
+		
+		
 		// title
 		svg.append('text')
 					.attr("x", 150)
@@ -152,7 +157,8 @@ function draw(data) {
 					.style("fill", "none")
 					.style("stroke-width", 	1);
 		
-		
+		//remove hover
+		d3.selectAll(".dimple-bubble").on("mouseover",null);
 
 	};
 </script>
