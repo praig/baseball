@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+<script type="text/javascript">
+	function draw(data) {
+
+		/*
+		  D3.js setup code
+		 */
+
+		"use strict";
+		var margin = 75, width = 800 - margin, height = 600 - margin;
+
+		debugger;
+
+		//add svg
+		var svg = d3.select("body")
+					.append("svg")
+					.attr("width", width + margin)
+					.attr("height", height + margin)
+					.attr("overflow", "scroll")
+					.append('g')
+					.attr('class', 'chart');
+
+		/*
+		  Dimple.js Chart construction code
+		 */
+		var myChart = new dimple.chart(svg, data);
+		myChart.addCategoryAxis("x", "weight").fontSize = 'auto';
+		myChart.addCategoryAxis("y", "height").fontSize = 'auto';
+		myChart.addMeasureAxis("z", "HR");
+
+		myChart.addSeries("handedness", dimple.plot.bubble)
+					.aggregate = dimple.aggregateMethod.avg;
+		myChart.addLegend(50, height - 30, width - 20, 20, "right");
+
+		myChart.draw();
+
+		// add text
+		// title
+		svg.append('text')
+					.attr("x", 150)
+					.attr("y", 35)
+					.text("Player Physical Parameters vs Home Runs")
+					.attr("font-family","sans-serif")
+					.attr("font-size", "30px")
+					.attr("fill", "black");
+		
+		// cutsie blurb
+		svg.append('text')
+					.attr("x", margin + 200)
+					.attr("y", height - 20)
+					.text("the bigger they are ...")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "20px")
+					.attr("fill", "grey");
+
+		svg.append('text')
+					.attr("x", margin + 250)
+					.attr("y", height).text("the farther it falls")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "20px")
+					.attr("fill", "grey");
+
+		// handedness legend formating
+		svg.append('text')
+					.attr("x", width-70)
+					.attr("y", height-40)
+					.text("Handedness")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "10px")
+					.attr("fill", "black");
+		
+		svg.append("rect")
+		            .attr("x", width -100)
+		            .attr("y", height-55)
+		            .attr("width", 120)
+		            .attr("height", 50)
+		            .style("stroke", "black")
+  					.style("fill", "none")
+ 					.style("stroke-width", 	1);
+		
+		// HR legend
+		svg.append('circle')
+					.attr("cx", margin+75)
+        			.attr("cy", margin+70)
+        			.attr("r", 11.4)
+        			.style("stroke", "black")
+					.style("fill", "none")
+					.style("stroke-width", 	1)
+		svg.append('circle')
+					.attr("cx", margin+75)
+					.attr("cy", margin+70)
+					.attr("r", 28.5)
+					.style("stroke", "black")
+					.style("fill", "none")
+					.style("stroke-width", 	1);
+		svg.append('circle')
+					.attr("cx", margin+75)
+					.attr("cy", margin+70)
+					.attr("r", 45.6)
+					.style("stroke", "black")
+					.style("fill", "none")
+					.style("stroke-width", 	1);
+		svg.append('text')
+					.attr("x", margin+75-7)
+					.attr("y", margin +70)
+					.text("100")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "8px")
+					.attr("fill", "black");
+		svg.append('text')
+					.attr("x", margin+75-7)
+					.attr("y", margin +70-17.1)
+					.text("250")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "8px")
+					.attr("fill", "black");
+		svg.append('text')
+					.attr("x", margin+75-7)
+					.attr("y", margin +70-34.2)
+					.text("400")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "8px")
+					.attr("fill", "black");
+		svg.append('text')
+					.attr("x", margin+50)
+					.attr("y", margin +15)
+					.text("Home Runs")
+					.attr("font-family", "sans-serif")
+					.attr("font-size", "10px")
+					.attr("fill", "black");
+		svg.append("rect")
+			        .attr("x", margin +20)
+        			.attr("y", margin )
+			        .attr("width", 110)
+        			.attr("height", 120)
+        			.style("stroke", "black")
+					.style("fill", "none")
+					.style("stroke-width", 	1);
+
+		
+	};
+</script>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		  Use D3 (not dimple.js) to load the TSV file
+		  and pass the contents of it to the draw function
+		 */
+		d3.csv("baseball_data.csv", draw);
+	</script>
+</body>
+</html>

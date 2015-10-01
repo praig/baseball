@@ -25,3 +25,5 @@ on one chart. I chose to put height and weight on the axis because there are so 
  
 ##Resources 
 I consulted D3 and Dimple documentation to create the visualization.
+BMI formula was found at http://www.dummies.com/how-to/content/how-to-calculate-your-body-mass-index0.html
+cleanAxis function from stackoverthrow

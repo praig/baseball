@@ -5,7 +5,28 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
 <script type="text/javascript">
-	function draw(data) {
+var cleanAxis=function(axis,interval){
+	if (axis.shapes.length>0){
+		var del=0;
+		if (interval > 1){
+			axis.shapes.selectAll("text").each(function(d){
+				if (del % interval !==0){
+					this.remove();
+					axis.shapes.selectAll("line").each(function(d2){
+						if (d==d2){
+							this.remove();
+						}
+					});
+				}
+			del+=1;	
+			});
+		}
+	}
+		
+}
+
+function draw(data) {
+		
 
 		/*
 		  D3.js setup code
@@ -28,16 +49,20 @@
 		/*
 		  Dimple.js Chart construction code
 		 */
-		var myChart = new dimple.chart(svg, data);
-		myChart.addCategoryAxis("x", "weight").fontSize = 'auto';
-		myChart.addCategoryAxis("y", "height").fontSize = 'auto';
-		myChart.addMeasureAxis("z", "HR");
+			var myChart = new dimple.chart(svg, data);
+			var x=myChart.addCategoryAxis("x", "weight");
+				x.fontSize = 'auto';
+			myChart.addCategoryAxis("y", "height").fontSize = 'auto';
+			myChart.addMeasureAxis("z", "HR");
 
-		myChart.addSeries("handedness", dimple.plot.bubble)
-					.aggregate = dimple.aggregateMethod.avg;
-		myChart.addLegend(50, height - 30, width - 20, 20, "right");
+			myChart.addSeries("handedness", dimple.plot.bubble)
+						.aggregate = dimple.aggregateMethod.avg;
+			myChart.addLegend(50, height - 30, width - 20, 20, "right");
 
-		myChart.draw();
+			myChart.draw();
+		
+		//reduce ticks
+		cleanAxis(x,10);
 
 		// add text
 		// title
@@ -49,22 +74,7 @@
 					.attr("font-size", "30px")
 					.attr("fill", "black");
 		
-		// cutsie blurb
-		svg.append('text')
-					.attr("x", margin + 200)
-					.attr("y", height - 20)
-					.text("the bigger they are ...")
-					.attr("font-family", "sans-serif")
-					.attr("font-size", "20px")
-					.attr("fill", "grey");
-
-		svg.append('text')
-					.attr("x", margin + 250)
-					.attr("y", height).text("the farther it falls")
-					.attr("font-family", "sans-serif")
-					.attr("font-size", "20px")
-					.attr("fill", "grey");
-
+		
 		// handedness legend formating
 		svg.append('text')
 					.attr("x", width-70)
@@ -141,12 +151,14 @@
         			.style("stroke", "black")
 					.style("fill", "none")
 					.style("stroke-width", 	1);
-
 		
+		
+
 	};
 </script>
 </head>
 <body>
+<div>
 	<script type="text/javascript">
 		/*
 		  Use D3 (not dimple.js) to load the TSV file
@@ -154,5 +166,11 @@
 		 */
 		d3.csv("baseball_data.csv", draw);
 	</script>
+	</div>
+	<p>The graphic shows the relationship between physical attributes and home 
+	runs for a collection of 1157 baseball players.<br>
+It highlights that, when they hit homers, the "heftier" guys tended to hit more.<br>
+ The more compact fellows and the tall, lanky fellows hit fewer. <br>
+ The trend holds for left, right, and switch hitters. </p>
 </body>
 </html>
