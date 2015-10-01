@@ -20,15 +20,15 @@ Finally the size is set for the HR value since really it was the "result" and ha
 ##Feedback 
 * Ed Smith 
  * feedback: The legend for handedness needs to stand out more
- * result: Added title and surounding box
+ * result: Added title and surrounding box
 * Isabella Raig
  * feedback: The title gets off center when the browser is resized.
  * result: Moved title into svg 
 * Coy Raig
- * feedback: OK so I know that im looking at a chart of baseball stats but I don't know what conclussion im seing.
- * result: Added cutsie blurb "The bigger they are, the farther it falls" to sumarize conclussion
+ * feedback: OK so I know that I'm looking at a chart of baseball stats but I don't know what conclusion I'm seeing.
+ * result: Added cutesy blurb "The bigger they are, the farther it falls" to summarize conclusion
  * feedback: What do the circles represent?
- * result: Added legend for bubles
+ * result: Added legend for bubbles
 * Udacity Grader
  * feedback: One thing I noticed was that the visualization is over plotted, and the large circles are covering some of the smaller circles.
  * result: Removed mouseover event handler. I have not been able to find a way to rearrange the drawing so smaller circles are above larger ones. So I removed the event handler altogether
