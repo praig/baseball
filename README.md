@@ -1,5 +1,5 @@
 # Baseball
-For my udacity EDV class
+For my Udacity EDV class
 ##Summary 
 The graphic shows the relationship between physical attributes and home runs for a collection of 1157 baseball players.
 It highlights that, when they hit homers, the "heftier" guys tended to hit more. The more compact fellows and the tall, lanky fellows hit fewer. The trend holds for left, right, and switch hitters. 
@@ -18,18 +18,21 @@ Finally the size is set for the HR value since really it was the "result" and ha
 
 
 ##Feedback 
-* Ed Smith 
+### Ed Smith 
  * feedback: The legend for handedness needs to stand out more
  * result: Added title and surrounding box
-* Isabella Raig
+
+### Isabella Raig
  * feedback: The title gets off center when the browser is resized.
  * result: Moved title into svg 
-* Coy Raig
+
+### Coy Raig
  * feedback: OK so I know that I'm looking at a chart of baseball stats but I don't know what conclusion I'm seeing.
  * result: Added cutesy blurb "The bigger they are, the farther it falls" to summarize conclusion
  * feedback: What do the circles represent?
  * result: Added legend for bubbles
-* Udacity Grader
+
+### Udacity Grader
  * feedback: One thing I noticed was that the visualization is over plotted, and the large circles are covering some of the smaller circles.
  * result: Removed mouseover event handler. I have not been able to find a way to rearrange the drawing so smaller circles are above larger ones. So I removed the event handler altogether
  * feedback: the reader should be explicitly told that home runs is encoded to radius.
@@ -40,7 +43,10 @@ Finally the size is set for the HR value since really it was the "result" and ha
  * result: added handedness title to legend
  * feedback: I think "the bigger they are, the harder it falls..." is a fun line, but it probably wouldn't give the reader enough information to understand the story. I'd write out a short sentence or two explaining more explicitly what the chart is trying to show.
  * result: Removed cute blurb and added verbage to explain the chart
-
+ * feedback: A more complex function like lines 8-26 would definitely need some commenting
+ * result: Added comments
+ * feedback: Automation needed.
+ * result: Enabled hover again and resolved issue where user was unable to select bubbles hiding behind other bubbles by correctly sorting the order in which bubbles are added. Plot is still crowded but its on purpose and does not affect function.
  
 ##Resources 
 I consulted D3 and Dimple documentation to create the visualization.
